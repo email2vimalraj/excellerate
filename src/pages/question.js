@@ -8,6 +8,7 @@ import FirebaseContext from "../firebase";
 const Question = () => {
   const [question, setQuestion] = React.useState("");
   const [submitted, setSubmitted] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
   const { firebase } = React.useContext(FirebaseContext);
 
@@ -16,12 +17,13 @@ const Question = () => {
     const db = firebase.firestore();
 
     try {
-      const docRef = await db.collection("questions").add({
+      setLoading(true);
+      await db.collection("questions").add({
         question,
         createdAt: Date.now()
       });
-      console.log(docRef.id);
       setSubmitted(true);
+      setLoading(false);
     } catch (error) {
       console.error(error);
     }
@@ -57,7 +59,12 @@ const Question = () => {
       </Row>
 
       <Row justify="center" type="flex" style={{ marginBottom: 30 }}>
-        <Button size="large" className="button" onClick={handleSubmit}>
+        <Button
+          size="large"
+          className="button"
+          onClick={handleSubmit}
+          loading={loading}
+        >
           Submit
         </Button>
       </Row>

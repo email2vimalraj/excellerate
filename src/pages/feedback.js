@@ -67,6 +67,7 @@ const Feedback = () => {
 
   const [errorMessage, setErrorMessage] = React.useState(null);
   const [submitted, setSubmitted] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
   const onFirstnameChange = e => {
     setFirstname({ ...firstname, value: e.target.value });
@@ -202,6 +203,7 @@ const Feedback = () => {
     const db = firebase.firestore();
 
     try {
+      setLoading(true);
       const data = {
         firstname: firstname.value,
         lastname: lastname.value,
@@ -223,6 +225,7 @@ const Feedback = () => {
       };
       await db.collection("feedbacks").add(data);
       setSubmitted(true);
+      setLoading(false);
     } catch (error) {
       setErrorMessage("Error while saving the feedback. Please try again!");
     }
@@ -533,6 +536,7 @@ const Feedback = () => {
                   htmlType="submit"
                   className="button"
                   onClick={handleSubmit}
+                  loading={loading}
                 >
                   Submit
                 </Button>
