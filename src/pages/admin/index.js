@@ -1,5 +1,7 @@
 import React from "react";
-import { Row, Table, Col, Spin } from "antd";
+import { Row, Table, Col, Spin, Button } from "antd";
+
+import "../../style.css";
 
 import FirebaseContext from "../../firebase";
 
@@ -67,6 +69,11 @@ const Admin = () => {
       style={{ marginTop: 30, marginBottom: 30 }}
     >
       <Col span={12}>
+        <Button size="large" className="button" href="/Ecl1392019/feedback">
+          Feedbacks
+        </Button>
+        <br />
+        <br />
         <Table
           columns={columns}
           dataSource={dataSource}

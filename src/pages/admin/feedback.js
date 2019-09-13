@@ -1,6 +1,8 @@
 import React from "react";
-import { Row, Table, Spin } from "antd";
+import { Row, Col, Table, Spin, Button } from "antd";
 import { CSVLink } from "react-csv";
+
+import "../../style.css";
 
 import FirebaseContext from "../../firebase";
 
@@ -191,23 +193,36 @@ const AdminFeedback = () => {
   });
 
   return (
-    <Row style={{ marginTop: 30, marginBottom: 30 }}>
-      <CSVLink
-        data={dataSource}
-        headers={columns}
-        filename={`feedbacks-${Date.now()}.csv`}
-        style={{ marginBottom: 10 }}
-        className="ant-btn button ant-btn-lg"
+    <>
+      <Row
+        type="flex"
+        justify="center"
+        style={{ marginTop: 30, marginBottom: 30 }}
       >
-        Download
-      </CSVLink>
-      <Table
-        columns={columns}
-        dataSource={dataSource}
-        bordered
-        pagination={false}
-      />
-    </Row>
+        <Col span={12}>
+          <Button size="large" className="button" href="/Ecl1392019">
+            Questions
+          </Button>
+          <CSVLink
+            data={dataSource}
+            headers={columns}
+            filename={`feedbacks-${Date.now()}.csv`}
+            style={{ marginBottom: 10 }}
+            className="ant-btn button ant-btn-lg"
+          >
+            Download
+          </CSVLink>
+        </Col>
+      </Row>
+      <Row style={{ marginTop: 30, marginBottom: 30 }}>
+        <Table
+          columns={columns}
+          dataSource={dataSource}
+          bordered
+          pagination={false}
+        />
+      </Row>
+    </>
   );
 };
 
