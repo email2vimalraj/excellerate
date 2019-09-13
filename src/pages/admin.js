@@ -42,15 +42,21 @@ const Admin = () => {
   const dataSource = [];
   const columns = [
     {
+      title: "S. No.",
+      key: "no",
+      dataIndex: "no"
+    },
+    {
       title: "Question",
       key: "question",
       dataIndex: "question"
     }
   ];
-  questions.forEach(doc => {
+  questions.forEach((doc, idx) => {
     dataSource.push({
       key: doc.id,
-      question: doc.data().question
+      question: doc.data().question,
+      no: idx + 1
     });
   });
 
