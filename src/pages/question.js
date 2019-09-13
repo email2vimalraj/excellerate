@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "@reach/router";
 import { Row, Typography, Button } from "antd";
 
 import "../style.css";
@@ -31,15 +32,20 @@ const Question = () => {
 
   if (submitted) {
     return (
-      <Row
-        justify="center"
-        type="flex"
-        style={{ marginTop: 30, marginBottom: 30 }}
-      >
-        <Typography.Title level={2}>
-          Thank you for submitting the question!
-        </Typography.Title>
-      </Row>
+      <>
+        <Row
+          justify="center"
+          type="flex"
+          style={{ marginTop: 30, marginBottom: 10 }}
+        >
+          <Typography.Title level={2}>
+            Thank you for submitting the question!
+          </Typography.Title>
+        </Row>
+        <Row justify="center" type="flex" style={{ marginBottom: 30 }}>
+          <Link to="/">Go back to Home</Link>
+        </Row>
+      </>
     );
   }
 
