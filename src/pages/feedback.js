@@ -251,13 +251,26 @@ const Feedback = () => {
       justify="center"
       style={{ marginTop: 30, marginBottom: 30 }}
     >
-      <Col span={12}>
+      <Col span={18}>
         <Row type="flex" justify="center">
-          <Col span={12}>
+          <Col span={18}>
             {errorMessage && (
               <Typography.Text type="danger">{errorMessage}</Typography.Text>
             )}
             <Form onSubmit={handleSubmit}>
+              <Typography.Title
+                level={4}
+                style={{
+                  backgroundColor: "#4085c6",
+                  color: "#fff",
+                  padding: 5
+                }}
+              >
+                CUSTOMER / COMPANY DETAILS
+              </Typography.Title>
+              <Typography.Text type="secondary">
+                All information provided will be kept confidential
+              </Typography.Text>
               <Form.Item required label="First Name" {...firstname}>
                 <Input
                   placeholder="Your answer"
@@ -422,6 +435,19 @@ const Feedback = () => {
               </Form.Item>
 
               {/* Project Information */}
+              <Typography.Title
+                level={4}
+                style={{
+                  backgroundColor: "#4085c6",
+                  color: "#fff",
+                  padding: 5
+                }}
+              >
+                PROJECT INFORMATION
+              </Typography.Title>
+              <Typography.Text type="secondary">
+                All information provided will be kept confidential
+              </Typography.Text>
               <Form.Item required label="Current Project">
                 <Radio.Group onChange={handleQ7RadioChange} value={q7Radio}>
                   <Radio

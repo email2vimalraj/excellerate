@@ -58,7 +58,7 @@ const Question = () => {
         />
       </Row>
 
-      <Row justify="center" type="flex" style={{ marginBottom: 30 }}>
+      <Row justify="center" type="flex" style={{ marginBottom: 10 }}>
         <Button
           size="large"
           className="button"
@@ -67,6 +67,13 @@ const Question = () => {
         >
           Submit
         </Button>
+      </Row>
+
+      <Row justify="center" type="flex" style={{ marginBottom: 30 }}>
+        <Typography.Text type="secondary">
+          * Please note that we're not taking your personal / company details,
+          the Q&A form stays completely anonymous. Privacy Protected!
+        </Typography.Text>
       </Row>
     </>
   );
