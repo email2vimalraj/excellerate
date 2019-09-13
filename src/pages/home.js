@@ -12,7 +12,7 @@ export default () => (
         </Button>
       </Col>
       <Col span={12}>
-        <Button size="large" className="button">
+        <Button size="large" className="button" href="/feedback">
           Feedback Form
         </Button>
       </Col>
