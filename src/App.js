@@ -9,6 +9,7 @@ import Home from "./pages/home";
 import Question from "./pages/question";
 import Feedback from "./pages/feedback";
 import Admin from "./pages/admin";
+import AdminFeedback from "./pages/admin/feedback";
 
 import "./style.css";
 
@@ -31,7 +32,8 @@ function App() {
         <Home path="/" />
         <Question path="question" />
         <Feedback path="feedback" />
-        <Admin path="admin" />
+        <Admin path="Ecl1392019" />
+        <AdminFeedback path="/Ecl1392019/feedback" />
       </Router>
 
       <Row>

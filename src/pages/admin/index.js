@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Table, Col, Spin } from "antd";
 
-import FirebaseContext from "../firebase";
+import FirebaseContext from "../../firebase";
 
 const Admin = () => {
   const { firebase } = React.useContext(FirebaseContext);
