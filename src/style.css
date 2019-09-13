@@ -14,3 +14,31 @@
   background-color: #fafafa;
   min-height: 200px;
 }
+
+.logo {
+  width: 250px;
+}
+
+.footerimage {
+  width: 300px;
+}
+
+@media (min-width: 576px) {
+  .logo {
+    width: 500px;
+  }
+
+  .footerimage {
+    width: 500px;
+  }
+}
+
+@media (min-width: 768px) {
+  .logo {
+    width: 870px;
+  }
+
+  .footerimage {
+    width: 870px;
+  }
+}

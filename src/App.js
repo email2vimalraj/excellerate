@@ -10,13 +10,19 @@ import Question from "./pages/question";
 import Feedback from "./pages/feedback";
 import Admin from "./pages/admin";
 
+import "./style.css";
+
 function App() {
   return (
     <>
       <Row justify="center" type="flex">
         <Col>
           <Link to="/">
-            <img src={HeaderImage} alt="Excellerate - Tata Communications" />
+            <img
+              className="logo"
+              src={HeaderImage}
+              alt="Excellerate - Tata Communications"
+            />
           </Link>
         </Col>
       </Row>
@@ -29,7 +35,7 @@ function App() {
       </Router>
 
       <Row>
-        <img src={FooterImage} alt="Footer Design" />
+        <img className="footerimage" src={FooterImage} alt="Footer Design" />
       </Row>
     </>
 
