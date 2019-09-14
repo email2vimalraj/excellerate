@@ -72,6 +72,12 @@ const Admin = () => {
         <Button size="large" className="button" href="/Ecl1392019/feedback">
           Feedbacks
         </Button>
+        <Button size="large" className="button" href="/Ecl1392019/addpoll">
+          Add Poll
+        </Button>
+        <Button size="large" className="button" href="/Ecl1392019/polllist">
+          Poll List
+        </Button>
         <br />
         <br />
         <Table
