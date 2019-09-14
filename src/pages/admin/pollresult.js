@@ -92,7 +92,7 @@ const PollResult = ({ pollid }) => {
           </Col>
           <Col span={4} style={{ paddingLeft: "20px" }}>
             <Typography.Text style={{ fontSize: "18px", fontWeight: "bold" }}>
-              {Object.values(item)[0]}
+              {Object.values(item)[0]} %
             </Typography.Text>
           </Col>
         </Row>

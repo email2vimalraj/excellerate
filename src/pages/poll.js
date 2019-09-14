@@ -1,6 +1,6 @@
 import React from "react";
 import publicIp from "public-ip";
-import { Spin, Typography, Form, Radio, Button } from "antd";
+import { Spin, Typography, Form, Radio, Button, Row, Col } from "antd";
 
 import "../style.css";
 
@@ -40,28 +40,56 @@ const Poll = () => {
   }, [firebase]);
 
   if (pollLoading) {
-    return <Spin size="large" />;
+    return (
+      <Row
+        justify="center"
+        type="flex"
+        style={{ marginTop: 30, marginBottom: 30 }}
+      >
+        <Spin size="large" />
+      </Row>
+    );
   }
 
   if (!pollLoading && !pollQuestion) {
     return (
-      <Typography.Title level={2}>
-        No polls available right now! Come back soon!
-      </Typography.Title>
+      <Row
+        justify="center"
+        type="flex"
+        style={{ marginTop: 30, marginBottom: 30 }}
+      >
+        <Typography.Title level={2}>
+          No polls available right now! Come back soon!
+        </Typography.Title>
+      </Row>
     );
   }
 
   if (submitted) {
     return (
-      <Typography.Title level={2}>Your vote counted! Thanks!</Typography.Title>
+      <Row
+        justify="center"
+        type="flex"
+        style={{ marginTop: 30, marginBottom: 30 }}
+      >
+        <Typography.Title level={2}>
+          Your vote counted! Thanks!
+        </Typography.Title>
+      </Row>
     );
   }
 
   if (alreadySubmitted) {
     return (
-      <Typography.Title level={2}>
-        Your vote was already captured!
-      </Typography.Title>
+      <Row
+        justify="center"
+        type="flex"
+        style={{ marginTop: 30, marginBottom: 30 }}
+      >
+        <Typography.Title level={2}>
+          Your vote was already captured!
+        </Typography.Title>
+      </Row>
     );
   }
 
@@ -101,31 +129,37 @@ const Poll = () => {
   const { question, options } = pollQuestion.data();
 
   return (
-    <>
-      <Typography.Title level={2}>{question}</Typography.Title>
-      <Form onSubmit={handleSubmit}>
-        <Form.Item>
-          <Radio.Group onChange={handleOptionChange} value={selectedOption}>
-            {options.map(option => (
-              <Radio style={radioStyle} key={option} value={option}>
-                {option}
-              </Radio>
-            ))}
-          </Radio.Group>
-        </Form.Item>
+    <Row
+      justify="center"
+      type="flex"
+      style={{ marginTop: 30, marginBottom: 30 }}
+    >
+      <Col>
+        <Typography.Title level={2}>{question}</Typography.Title>
+        <Form onSubmit={handleSubmit}>
+          <Form.Item>
+            <Radio.Group onChange={handleOptionChange} value={selectedOption}>
+              {options.map(option => (
+                <Radio style={radioStyle} key={option} value={option}>
+                  {option}
+                </Radio>
+              ))}
+            </Radio.Group>
+          </Form.Item>
 
-        <Form.Item>
-          <Button
-            htmlType="submit"
-            className="button"
-            onClick={handleSubmit}
-            loading={loading}
-          >
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
-    </>
+          <Form.Item>
+            <Button
+              htmlType="submit"
+              className="button"
+              onClick={handleSubmit}
+              loading={loading}
+            >
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </Col>
+    </Row>
   );
 };
 
