@@ -8,6 +8,7 @@ import FirebaseContext from "../../firebase";
 const PollResult = ({ pollid }) => {
   const { firebase } = React.useContext(FirebaseContext);
   const [data, setData] = React.useState(null);
+  const [question, setQuestion] = React.useState(null);
 
   React.useEffect(() => {
     let unsubscribe = null;
@@ -19,7 +20,8 @@ const PollResult = ({ pollid }) => {
         .collection("polls")
         .doc(pollid)
         .get();
-      const { options } = doc.data();
+      const { options, question } = doc.data();
+      setQuestion(question);
 
       // 2. load the poll results with the poll id
       unsubscribe = db
@@ -63,6 +65,12 @@ const PollResult = ({ pollid }) => {
 
   return (
     <Row style={{ marginTop: 50, marginBottom: 50 }}>
+      <Typography.Title
+        level={2}
+        style={{ textAlign: "center", marginBottom: 20 }}
+      >
+        {question}
+      </Typography.Title>
       {data.map(item => (
         <Row
           key={Object.keys(item)[0]}
