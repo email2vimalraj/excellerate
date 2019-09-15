@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Table, Col, Spin, Button } from "antd";
+import { Row, Table, Col, Spin, Button, Breadcrumb } from "antd";
 
 import "../../style.css";
 
@@ -63,31 +63,42 @@ const Admin = () => {
   });
 
   return (
-    <Row
-      type="flex"
-      justify="center"
-      style={{ marginTop: 30, marginBottom: 30 }}
-    >
-      <Col span={12}>
-        <Button size="large" className="button" href="/Ecl1392019/feedback">
-          Feedbacks
-        </Button>
-        <Button size="large" className="button" href="/Ecl1392019/addpoll">
-          Add Poll
-        </Button>
-        <Button size="large" className="button" href="/Ecl1392019/polllist">
-          Poll List
-        </Button>
-        <br />
-        <br />
-        <Table
-          columns={columns}
-          dataSource={dataSource}
-          bordered
-          pagination={false}
-        />
-      </Col>
-    </Row>
+    <>
+      <Row
+        type="flex"
+        justify="center"
+        style={{ marginTop: 30, marginBottom: 30 }}
+      >
+        <Breadcrumb>
+          <Breadcrumb.Item>Admin Home</Breadcrumb.Item>
+        </Breadcrumb>
+      </Row>
+      <Row
+        type="flex"
+        justify="center"
+        style={{ marginTop: 30, marginBottom: 30 }}
+      >
+        <Col span={12}>
+          <Button size="large" className="button" href="/Ecl1392019/feedback">
+            Feedbacks
+          </Button>
+          <Button size="large" className="button" href="/Ecl1392019/addpoll">
+            Add Poll
+          </Button>
+          <Button size="large" className="button" href="/Ecl1392019/polllist">
+            Poll List
+          </Button>
+          <br />
+          <br />
+          <Table
+            columns={columns}
+            dataSource={dataSource}
+            bordered
+            pagination={false}
+          />
+        </Col>
+      </Row>
+    </>
   );
 };
 

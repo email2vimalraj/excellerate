@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
-import { Row, Col, Spin, Button, Divider } from "antd";
+import { Row, Col, Spin, Button, Divider, Breadcrumb } from "antd";
 
 import "../../style.css";
 
@@ -41,6 +41,15 @@ const PollList = () => {
 
   return (
     <>
+      <Row type="flex" justify="center" style={{ marginTop: "30px" }}>
+        <Breadcrumb>
+          <Breadcrumb.Item>
+            <Link to="/Ecl1392019">Admin Home</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>Poll List</Breadcrumb.Item>
+        </Breadcrumb>
+      </Row>
+
       {docs.map(doc => {
         return (
           <Row

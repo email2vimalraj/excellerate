@@ -1,5 +1,6 @@
 import React from "react";
-import { Row, Col, Table, Spin, Button } from "antd";
+import { Link } from "@reach/router";
+import { Row, Col, Table, Spin, Button, Breadcrumb, Icon } from "antd";
 import { CSVLink } from "react-csv";
 
 import "../../style.css";
@@ -199,6 +200,18 @@ const AdminFeedback = () => {
         justify="center"
         style={{ marginTop: 30, marginBottom: 30 }}
       >
+        <Breadcrumb>
+          <Breadcrumb.Item>
+            <Link to="/Ecl1392019">Admin Home</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>Feedbacks</Breadcrumb.Item>
+        </Breadcrumb>
+      </Row>
+      <Row
+        type="flex"
+        justify="center"
+        style={{ marginTop: 30, marginBottom: 30 }}
+      >
         <Col span={12}>
           <Button size="large" className="button" href="/Ecl1392019">
             Questions
@@ -210,7 +223,8 @@ const AdminFeedback = () => {
             style={{ marginBottom: 10 }}
             className="ant-btn button ant-btn-lg"
           >
-            Download
+            <Icon type="download" />
+            &nbsp;Download
           </CSVLink>
         </Col>
       </Row>

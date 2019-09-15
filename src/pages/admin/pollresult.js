@@ -1,5 +1,6 @@
 import React from "react";
-import { Row, Spin, Progress, Col, Typography } from "antd";
+import { Link } from "@reach/router";
+import { Row, Spin, Progress, Col, Typography, Breadcrumb } from "antd";
 
 import "../../style.css";
 
@@ -64,40 +65,54 @@ const PollResult = ({ pollid }) => {
   }
 
   return (
-    <Row style={{ marginTop: 50, marginBottom: 50 }}>
-      <Typography.Title
-        level={2}
-        style={{ textAlign: "center", marginBottom: 20 }}
-      >
-        {question}
-      </Typography.Title>
-      {data.map(item => (
-        <Row
-          key={Object.keys(item)[0]}
-          type="flex"
-          justify="center"
-          style={{ marginBottom: 30 }}
+    <>
+      <Row type="flex" justify="center" style={{ marginTop: "30px" }}>
+        <Breadcrumb>
+          <Breadcrumb.Item>
+            <Link to="/Ecl1392019">Admin Home</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <Link to="/Ecl1392019/polllist">Poll List</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>Poll Results</Breadcrumb.Item>
+        </Breadcrumb>
+      </Row>
+
+      <Row style={{ marginTop: 50, marginBottom: 50 }}>
+        <Typography.Title
+          level={2}
+          style={{ textAlign: "center", marginBottom: 20 }}
         >
-          <Col span={2} style={{ textAlign: "right", paddingRight: "20px" }}>
-            <Typography.Text style={{ fontSize: "18px", fontWeight: "bold" }}>
-              {Object.keys(item)[0]}
-            </Typography.Text>
-          </Col>
-          <Col span={6}>
-            <Progress
-              percent={Object.values(item)[0]}
-              showInfo={false}
-              strokeWidth={30}
-            />
-          </Col>
-          <Col span={4} style={{ paddingLeft: "20px" }}>
-            <Typography.Text style={{ fontSize: "18px", fontWeight: "bold" }}>
-              {Object.values(item)[0]} %
-            </Typography.Text>
-          </Col>
-        </Row>
-      ))}
-    </Row>
+          {question}
+        </Typography.Title>
+        {data.map(item => (
+          <Row
+            key={Object.keys(item)[0]}
+            type="flex"
+            justify="center"
+            style={{ marginBottom: 30 }}
+          >
+            <Col span={2} style={{ textAlign: "right", paddingRight: "20px" }}>
+              <Typography.Text style={{ fontSize: "18px", fontWeight: "bold" }}>
+                {Object.keys(item)[0]}
+              </Typography.Text>
+            </Col>
+            <Col span={6}>
+              <Progress
+                percent={Object.values(item)[0]}
+                showInfo={false}
+                strokeWidth={30}
+              />
+            </Col>
+            <Col span={4} style={{ paddingLeft: "20px" }}>
+              <Typography.Text style={{ fontSize: "18px", fontWeight: "bold" }}>
+                {Object.values(item)[0]} %
+              </Typography.Text>
+            </Col>
+          </Row>
+        ))}
+      </Row>
+    </>
   );
 };
 
