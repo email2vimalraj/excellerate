@@ -228,7 +228,7 @@ const AdminFeedback = () => {
           </CSVLink>
         </Col>
       </Row>
-      <Row style={{ marginTop: 30, marginBottom: 30 }}>
+      <Row style={{ margin: 30 }}>
         <Table
           columns={columns}
           dataSource={dataSource}

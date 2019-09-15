@@ -73,11 +73,7 @@ const Admin = () => {
           <Breadcrumb.Item>Admin Home</Breadcrumb.Item>
         </Breadcrumb>
       </Row>
-      <Row
-        type="flex"
-        justify="center"
-        style={{ marginTop: 30, marginBottom: 30 }}
-      >
+      <Row type="flex" justify="end" style={{ marginTop: 30 }}>
         <Col span={12}>
           <Button size="large" className="button" href="/Ecl1392019/feedback">
             Feedbacks
@@ -88,8 +84,14 @@ const Admin = () => {
           <Button size="large" className="button" href="/Ecl1392019/polllist">
             Poll List
           </Button>
-          <br />
-          <br />
+        </Col>
+      </Row>
+      <Row
+        type="flex"
+        justify="center"
+        style={{ marginTop: 20, marginBottom: 30 }}
+      >
+        <Col span={12}>
           <Table
             columns={columns}
             dataSource={dataSource}
