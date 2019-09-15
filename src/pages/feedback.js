@@ -6,12 +6,6 @@ import FirebaseContext from "../firebase";
 
 import "../style.css";
 
-const radioStyle = {
-  display: "block",
-  height: "30px",
-  lineHeight: "30px"
-};
-
 const Feedback = () => {
   const { firebase } = React.useContext(FirebaseContext);
 
@@ -258,329 +252,455 @@ const Feedback = () => {
       style={{ marginTop: 30, marginBottom: 30 }}
     >
       <Col span={18}>
-        <Row type="flex" justify="center">
-          <Col span={18}>
+        {errorMessage && (
+          <Typography.Text type="danger">{errorMessage}</Typography.Text>
+        )}
+        <Form onSubmit={handleSubmit}>
+          <Typography.Title
+            level={4}
+            style={{
+              backgroundColor: "#4085c6",
+              color: "#fff",
+              padding: 5
+            }}
+          >
+            CUSTOMER / COMPANY DETAILS
+          </Typography.Title>
+          <Typography.Text type="secondary">
+            All information provided will be kept confidential
+          </Typography.Text>
+          <Form.Item required label="First Name" {...firstname}>
+            <Input
+              placeholder="Your answer"
+              id="firstname"
+              onChange={onFirstnameChange}
+            />
+          </Form.Item>
+
+          <Form.Item required label="Last Name" {...lastname}>
+            <Input
+              placeholder="Your answer"
+              id="lastname"
+              onChange={onLastnameChange}
+            />
+          </Form.Item>
+
+          <Form.Item required label="Job Title" {...jobtitle}>
+            <Input
+              placeholder="Your answer"
+              id="jobtitle"
+              onChange={onJobtitleChange}
+            />
+          </Form.Item>
+
+          <Form.Item required label="Company" {...company}>
+            <Input
+              placeholder="Your answer"
+              id="company"
+              onChange={onCompanyChange}
+            />
+          </Form.Item>
+
+          <Form.Item required label="Contact number" {...contactnumber}>
+            <Input
+              placeholder="Your answer"
+              id="contactnumber"
+              onChange={onContactnumberChange}
+            />
+          </Form.Item>
+
+          <Form.Item required label="Company email" {...companyemail}>
+            <Input
+              type="email"
+              placeholder="Your answer"
+              id="companyemail"
+              onChange={onCompanyemailChange}
+            />
+          </Form.Item>
+
+          <Form.Item
+            required
+            label="Have you migrated your applications and workloads to cloud-based services?"
+          >
+            <input
+              type="radio"
+              name="q1Radio"
+              onChange={handleQ1RadioChange}
+              value="Yes"
+            />
+            &nbsp;Yes
+            <br />
+            <input
+              type="radio"
+              name="q1Radio"
+              onChange={handleQ1RadioChange}
+              value="In the process of migrating to cloud-based services"
+            />
+            &nbsp;In the process of migrating to cloud-based services
+            <br />
+            <input
+              type="radio"
+              name="q1Radio"
+              onChange={handleQ1RadioChange}
+              value="No"
+            />
+            &nbsp;No
+            <br />
+          </Form.Item>
+
+          <Form.Item
+            required
+            label="Have you implemented Internet breakouts at local branches to support direct access to cloud apps?"
+          >
+            <input
+              type="radio"
+              onChange={handleQ2RadioChange}
+              name="q2Radio"
+              value="Yes"
+            />
+            &nbsp;Yes
+            <br />
+            <input
+              type="radio"
+              onChange={handleQ2RadioChange}
+              name="q2Radio"
+              value="We are in the implementation process"
+            />
+            &nbsp;We are in the implementation process
+            <br />
+            <input
+              type="radio"
+              onChange={handleQ2RadioChange}
+              name="q2Radio"
+              value="No"
+            />
+            &nbsp;No
+            <br />
+          </Form.Item>
+
+          <Form.Item
+            required
+            label="Does your current WAN solution support your digital transformation objectives?"
+          >
+            <input
+              type="radio"
+              name="q3Radio"
+              onChange={handleQ3RadioChange}
+              value="Yes"
+            />
+            &nbsp;Yes
+            <br />
+            <input
+              type="radio"
+              name="q3Radio"
+              onChange={handleQ3RadioChange}
+              value="Almost - needs some work"
+            />
+            &nbsp;Almost - needs some work
+            <br />
+            <input
+              type="radio"
+              name="q3Radio"
+              onChange={handleQ3RadioChange}
+              value="No"
+            />
+            &nbsp;No
+            <br />
+          </Form.Item>
+
+          <Form.Item
+            required
+            label="Do you have a cyber security strategy in place?"
+          >
+            <input
+              type="radio"
+              name="q4Radio"
+              onChange={handleQ4RadioChange}
+              value="Yes"
+            />
+            &nbsp;Yes
+            <br />
+            <input
+              type="radio"
+              name="q4Radio"
+              onChange={handleQ4RadioChange}
+              value="We have one - but it is not quite right"
+            />
+            &nbsp;We have one - but it is not quite right
+            <br />
+            <input
+              type="radio"
+              name="q4Radio"
+              onChange={handleQ4RadioChange}
+              value="No"
+            />
+            &nbsp;No
+            <br />
+          </Form.Item>
+
+          <Form.Item
+            required
+            label="Are roles and responsibilities for cyber security well defined across your organisation?"
+          >
+            <input
+              type="radio"
+              name="q5Radio"
+              onChange={handleQ5RadioChange}
+              value="Yes"
+            />
+            &nbsp;Yes
+            <br />
+            <input
+              type="radio"
+              name="q5Radio"
+              onChange={handleQ5RadioChange}
+              value="Needs more work"
+            />
+            &nbsp;Needs more work
+            <br />
+            <input
+              type="radio"
+              name="q5Radio"
+              onChange={handleQ5RadioChange}
+              value="No"
+            />
+            &nbsp;No
+            <br />
+          </Form.Item>
+
+          <Form.Item
+            required
+            label="Do you have the right tools in place to mitigate cyber security incidents?"
+          >
+            <input
+              type="radio"
+              name="q6Radio"
+              onChange={handleQ6RadioChange}
+              value="Yes"
+            />
+            &nbsp;Yes
+            <br />
+            <input
+              type="radio"
+              name="q6Radio"
+              onChange={handleQ6RadioChange}
+              value="We have tools, but they are not effective"
+            />
+            &nbsp;We have tools, but they are not effective
+            <br />
+            <input
+              type="radio"
+              name="q6Radio"
+              onChange={handleQ6RadioChange}
+              value="No"
+            />
+            &nbsp;No
+            <br />
+          </Form.Item>
+
+          {/* Project Information */}
+          <Typography.Title
+            level={4}
+            style={{
+              backgroundColor: "#4085c6",
+              color: "#fff",
+              padding: 5
+            }}
+          >
+            PROJECT INFORMATION
+          </Typography.Title>
+          <Typography.Text type="secondary">
+            All information provided will be kept confidential
+          </Typography.Text>
+          <Form.Item required label="Current Project">
+            <input
+              type="radio"
+              name="q7Radio"
+              onChange={handleQ7RadioChange}
+              value="IoT with Mobile Network Connectivity"
+            />
+            &nbsp;IoT with Mobile Network Connectivity
+            <br />
+            <input
+              type="radio"
+              name="q7Radio"
+              onChange={handleQ7RadioChange}
+              value="Managed Hosting Services (Private Cloud, Managed Colocation, etc.)"
+            />
+            &nbsp;Managed Hosting Services (Private Cloud, Managed Colocation,
+            etc.)
+            <br />
+            <input
+              type="radio"
+              name="q7Radio"
+              onChange={handleQ7RadioChange}
+              value="Managed Security Services (SOC/SIEM, DDoS, VAPT, etc.)"
+            />
+            &nbsp;Managed Security Services (SOC/SIEM, DDoS, VAPT, etc.)
+            <br />
+            <input
+              type="radio"
+              name="q7Radio"
+              onChange={handleQ7RadioChange}
+              value="Network Connectivity (MPLS, SLA over Internet, SD-WAN, etc.)"
+            />
+            &nbsp;Network Connectivity (MPLS, SLA over Internet, SD-WAN, etc.)
+            <br />
+            <input
+              type="radio"
+              name="q7Radio"
+              onChange={handleQ7RadioChange}
+              value="Unified Communications as a Service (GSIP, Microsoft/Cisco, Microsoft TEAMS Direct Routing, etc.)"
+            />
+            &nbsp;Unified Communications as a Service (GSIP, Microsoft/Cisco,
+            Microsoft TEAMS Direct Routing, etc.)
+            <br />
+            <input
+              type="radio"
+              name="q7Radio"
+              onChange={handleQ7RadioChange}
+              value="Voice"
+            />
+            &nbsp;Voice
+            <br />
+          </Form.Item>
+
+          <Form.Item required label="What is your selected project timeline?">
+            <input
+              type="radio"
+              name="q8Radio"
+              onChange={handleQ8RadioChange}
+              value="Immediate"
+            />
+            &nbsp;Immediate
+            <br />
+            <input
+              type="radio"
+              name="q8Radio"
+              onChange={handleQ8RadioChange}
+              value="1-3 months"
+            />
+            &nbsp;1-3 months
+            <br />
+            <input
+              type="radio"
+              name="q8Radio"
+              onChange={handleQ8RadioChange}
+              value="3-6 months"
+            />
+            &nbsp;3-6 months
+            <br />
+            <input
+              type="radio"
+              name="q8Radio"
+              onChange={handleQ8RadioChange}
+              value="More than 6 months"
+            />
+            &nbsp;More than 6 months
+            <br />
+            <input
+              type="radio"
+              name="q8Radio"
+              onChange={handleQ8RadioChange}
+              value="Other"
+            />
+            &nbsp;Other&nbsp;&nbsp;&nbsp;
+            {q8Radio &&
+              (q8Radio === "Other" || q8Radio.startsWith("Other - ")) && (
+                <Input onChange={handleOtherForQ8} />
+              )}
+            <br />
+          </Form.Item>
+
+          <Form.Item required label="What is your project budget?">
+            <input
+              type="radio"
+              name="q9Radio"
+              onChange={handleQ9RadioChange}
+              value="US$10,000"
+            />
+            &nbsp;US$10,000
+            <br />
+            <input
+              type="radio"
+              name="q9Radio"
+              onChange={handleQ9RadioChange}
+              value="US$10,001 - US$50,000"
+            />
+            &nbsp;US$10,001 - US$50,000
+            <br />
+            <input
+              type="radio"
+              name="q9Radio"
+              onChange={handleQ9RadioChange}
+              value="US$50,001 - US$100,000"
+            />
+            &nbsp;US$50,001 - US$100,000
+            <br />
+            <input
+              type="radio"
+              name="q9Radio"
+              onChange={handleQ9RadioChange}
+              value="Above US$100,0001"
+            />
+            &nbsp;Above US$100,0001
+            <br />
+          </Form.Item>
+
+          <Form.Item required label="What is your role in the project?">
+            <Radio.Group onChange={handleQ10RadioChange} value={q10Radio}>
+              <input
+                type="radio"
+                name="q10Radio"
+                onChange={handleQ10RadioChange}
+                value="Decision Maker"
+              />
+              &nbsp;Decision Maker
+              <br />
+              <input
+                type="radio"
+                name="q10Radio"
+                onChange={handleQ10RadioChange}
+                value="Project Manager"
+              />
+              &nbsp;Project Manager
+              <br />
+              <input
+                type="radio"
+                name="q10Radio"
+                onChange={handleQ10RadioChange}
+                value="Influencer"
+              />
+              &nbsp;Influencer
+              <br />
+            </Radio.Group>
+          </Form.Item>
+
+          <Form.Item label="Please share with us an overview of your project/requirements">
+            <textarea
+              placeholder="Your answer"
+              id="comment"
+              onChange={onCommentChange}
+              rows={3}
+              cols={60}
+              className="commentsBox"
+            />
+          </Form.Item>
+
+          <div style={{ marginTop: 24 }}>
+            <Button
+              htmlType="submit"
+              className="button"
+              onClick={handleSubmit}
+              loading={loading}
+            >
+              Submit
+            </Button>
             {errorMessage && (
               <Typography.Text type="danger">{errorMessage}</Typography.Text>
             )}
-            <Form onSubmit={handleSubmit}>
-              <Typography.Title
-                level={4}
-                style={{
-                  backgroundColor: "#4085c6",
-                  color: "#fff",
-                  padding: 5
-                }}
-              >
-                CUSTOMER / COMPANY DETAILS
-              </Typography.Title>
-              <Typography.Text type="secondary">
-                All information provided will be kept confidential
-              </Typography.Text>
-              <Form.Item required label="First Name" {...firstname}>
-                <Input
-                  placeholder="Your answer"
-                  id="firstname"
-                  onChange={onFirstnameChange}
-                />
-              </Form.Item>
-
-              <Form.Item required label="Last Name" {...lastname}>
-                <Input
-                  placeholder="Your answer"
-                  id="lastname"
-                  onChange={onLastnameChange}
-                />
-              </Form.Item>
-
-              <Form.Item required label="Job Title" {...jobtitle}>
-                <Input
-                  placeholder="Your answer"
-                  id="jobtitle"
-                  onChange={onJobtitleChange}
-                />
-              </Form.Item>
-
-              <Form.Item required label="Company" {...company}>
-                <Input
-                  placeholder="Your answer"
-                  id="company"
-                  onChange={onCompanyChange}
-                />
-              </Form.Item>
-
-              <Form.Item required label="Contact number" {...contactnumber}>
-                <Input
-                  placeholder="Your answer"
-                  id="contactnumber"
-                  onChange={onContactnumberChange}
-                />
-              </Form.Item>
-
-              <Form.Item required label="Company email" {...companyemail}>
-                <Input
-                  type="email"
-                  placeholder="Your answer"
-                  id="companyemail"
-                  onChange={onCompanyemailChange}
-                />
-              </Form.Item>
-
-              <Form.Item
-                required
-                label="Have you migrated your applications and workloads to cloud-based services?"
-              >
-                <Radio.Group onChange={handleQ1RadioChange} value={q1Radio}>
-                  <Radio style={radioStyle} value="Yes">
-                    Yes
-                  </Radio>
-                  <Radio
-                    style={radioStyle}
-                    value="In the process of migrating to cloud-based services"
-                  >
-                    In the process of migrating to cloud-based services
-                  </Radio>
-                  <Radio style={radioStyle} value="No">
-                    No
-                  </Radio>
-                </Radio.Group>
-              </Form.Item>
-
-              <Form.Item
-                required
-                label="Have you implemented Internet breakouts at local branches to support direct access to cloud apps?"
-              >
-                <Radio.Group onChange={handleQ2RadioChange} value={q2Radio}>
-                  <Radio style={radioStyle} value="Yes">
-                    Yes
-                  </Radio>
-                  <Radio
-                    style={radioStyle}
-                    value="We are in the implementation process"
-                  >
-                    We are in the implementation process
-                  </Radio>
-                  <Radio style={radioStyle} value="No">
-                    No
-                  </Radio>
-                </Radio.Group>
-              </Form.Item>
-
-              <Form.Item
-                required
-                label="Does your current WAN solution support your digital transformation objectives?"
-              >
-                <Radio.Group onChange={handleQ3RadioChange} value={q3Radio}>
-                  <Radio style={radioStyle} value="Yes">
-                    Yes
-                  </Radio>
-                  <Radio style={radioStyle} value="Almost - needs some work">
-                    Almost - needs some work
-                  </Radio>
-                  <Radio style={radioStyle} value="No">
-                    No
-                  </Radio>
-                </Radio.Group>
-              </Form.Item>
-
-              <Form.Item
-                required
-                label="Do you have a cyber security strategy in place?"
-              >
-                <Radio.Group onChange={handleQ4RadioChange} value={q4Radio}>
-                  <Radio style={radioStyle} value="Yes">
-                    Yes
-                  </Radio>
-                  <Radio
-                    style={radioStyle}
-                    value="We have one - but it is not quite right"
-                  >
-                    We have one - but it is not quite right
-                  </Radio>
-                  <Radio style={radioStyle} value="No">
-                    No
-                  </Radio>
-                </Radio.Group>
-              </Form.Item>
-
-              <Form.Item
-                required
-                label="Are roles and responsibilities for cyber security well defined across your organisation?"
-              >
-                <Radio.Group onChange={handleQ5RadioChange} value={q5Radio}>
-                  <Radio style={radioStyle} value="Yes">
-                    Yes
-                  </Radio>
-                  <Radio style={radioStyle} value="Needs more work">
-                    Needs more work
-                  </Radio>
-                  <Radio style={radioStyle} value="No">
-                    No
-                  </Radio>
-                </Radio.Group>
-              </Form.Item>
-
-              <Form.Item
-                required
-                label="Do you have the right tools in place to mitigate cyber security incidents?"
-              >
-                <Radio.Group onChange={handleQ6RadioChange} value={q6Radio}>
-                  <Radio style={radioStyle} value="Yes">
-                    Yes
-                  </Radio>
-                  <Radio
-                    style={radioStyle}
-                    value="We have tools, but they are not effective"
-                  >
-                    We have tools, but they are not effective
-                  </Radio>
-                  <Radio style={radioStyle} value="No">
-                    No
-                  </Radio>
-                </Radio.Group>
-              </Form.Item>
-
-              {/* Project Information */}
-              <Typography.Title
-                level={4}
-                style={{
-                  backgroundColor: "#4085c6",
-                  color: "#fff",
-                  padding: 5
-                }}
-              >
-                PROJECT INFORMATION
-              </Typography.Title>
-              <Typography.Text type="secondary">
-                All information provided will be kept confidential
-              </Typography.Text>
-              <Form.Item required label="Current Project">
-                <Radio.Group onChange={handleQ7RadioChange} value={q7Radio}>
-                  <Radio
-                    style={radioStyle}
-                    value="IoT with Mobile Network Connectivity"
-                  >
-                    IoT with Mobile Network Connectivity
-                  </Radio>
-                  <Radio
-                    style={radioStyle}
-                    value="Managed Hosting Services (Private Cloud, Managed Colocation, etc.)"
-                  >
-                    Managed Hosting Services (Private Cloud, Managed Colocation,
-                    etc.)
-                  </Radio>
-                  <Radio
-                    style={radioStyle}
-                    value="Managed Security Services (SOC/SIEM, DDoS, VAPT, etc.)"
-                  >
-                    Managed Security Services (SOC/SIEM, DDoS, VAPT, etc.)
-                  </Radio>
-                  <Radio
-                    style={radioStyle}
-                    value="Network Connectivity (MPLS, SLA over Internet, SD-WAN, etc.)"
-                  >
-                    Network Connectivity (MPLS, SLA over Internet, SD-WAN, etc.)
-                  </Radio>
-                  <Radio
-                    style={radioStyle}
-                    value="Unified Communications as a Service (GSIP, Microsoft/Cisco, Microsoft TEAMS Direct Routing, etc.)"
-                  >
-                    Unified Communications as a Service (GSIP, Microsoft/Cisco,
-                    Microsoft TEAMS Direct Routing, etc.)
-                  </Radio>
-                  <Radio style={radioStyle} value="Voice">
-                    Voice
-                  </Radio>
-                </Radio.Group>
-              </Form.Item>
-
-              <Form.Item
-                required
-                label="What is your selected project timeline?"
-              >
-                <Radio.Group onChange={handleQ8RadioChange} value={q8Radio}>
-                  <Radio style={radioStyle} value="Immediate">
-                    Immediate
-                  </Radio>
-                  <Radio style={radioStyle} value="1-3 months">
-                    1-3 months
-                  </Radio>
-                  <Radio style={radioStyle} value="3-6 months">
-                    3-6 months
-                  </Radio>
-                  <Radio style={radioStyle} value="More than 6 months">
-                    More than 6 months
-                  </Radio>
-                  <Radio style={radioStyle} value="Other">
-                    Other&nbsp;&nbsp;&nbsp;
-                    {q8Radio &&
-                      (q8Radio === "Other" ||
-                        q8Radio.startsWith("Other - ")) && (
-                        <Input onChange={handleOtherForQ8} />
-                      )}
-                  </Radio>
-                </Radio.Group>
-              </Form.Item>
-
-              <Form.Item required label="What is your project budget?">
-                <Radio.Group onChange={handleQ9RadioChange} value={q9Radio}>
-                  <Radio style={radioStyle} value="US$10,000">
-                    US$10,000
-                  </Radio>
-                  <Radio style={radioStyle} value="US$10,001 - US$50,000">
-                    US$10,001 - US$50,000
-                  </Radio>
-                  <Radio style={radioStyle} value="US$50,001 - US$100,000">
-                    US$50,001 - US$100,000
-                  </Radio>
-                  <Radio style={radioStyle} value="Above US$100,0001">
-                    Above US$100,0001
-                  </Radio>
-                </Radio.Group>
-              </Form.Item>
-
-              <Form.Item required label="What is your role in the project?">
-                <Radio.Group onChange={handleQ10RadioChange} value={q10Radio}>
-                  <Radio style={radioStyle} value="Decision Maker">
-                    Decision Maker
-                  </Radio>
-                  <Radio style={radioStyle} value="Project Manager">
-                    Project Manager
-                  </Radio>
-                  <Radio style={radioStyle} value="Influencer">
-                    Influencer
-                  </Radio>
-                </Radio.Group>
-              </Form.Item>
-
-              <Form.Item label="Please share with us an overview of your project/requirements">
-                <textarea
-                  placeholder="Your answer"
-                  id="comment"
-                  onChange={onCommentChange}
-                  rows={3}
-                  cols={60}
-                />
-              </Form.Item>
-
-              <div style={{ marginTop: 24 }}>
-                <Button
-                  htmlType="submit"
-                  className="button"
-                  onClick={handleSubmit}
-                  loading={loading}
-                >
-                  Submit
-                </Button>
-                {errorMessage && (
-                  <Typography.Text type="danger">
-                    {errorMessage}
-                  </Typography.Text>
-                )}
-              </div>
-            </Form>
-          </Col>
-        </Row>
+          </div>
+        </Form>
       </Col>
     </Row>
   );
