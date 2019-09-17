@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
-import { Row, Typography, Button } from "antd";
+import { Row, Typography, Button, Radio } from "antd";
 
 import "../style.css";
 
@@ -10,8 +10,15 @@ const Question = () => {
   const [question, setQuestion] = React.useState("");
   const [submitted, setSubmitted] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const [selectedOption, setSelectedOption] = React.useState(
+    "Modern Workplace"
+  );
 
   const { firebase } = React.useContext(FirebaseContext);
+
+  const optionChange = e => {
+    setSelectedOption(e.target.value);
+  };
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -21,6 +28,7 @@ const Question = () => {
       setLoading(true);
       await db.collection("questions").add({
         question,
+        selectedOption,
         createdAt: Date.now()
       });
       setSubmitted(true);
@@ -62,6 +70,14 @@ const Question = () => {
           onChange={e => setQuestion(e.target.value)}
           value={question}
         />
+      </Row>
+
+      <Row justify="center" type="flex" style={{ margin: 10 }}>
+        <Radio.Group onChange={optionChange} value={selectedOption}>
+          <Radio value="Modern Workplace">Modern Workplace</Radio>
+          <Radio value="IoT">IoT</Radio>
+          <Radio value="Hybrid IT">Hybrid IT</Radio>
+        </Radio.Group>
       </Row>
 
       <Row justify="center" type="flex" style={{ marginBottom: 10 }}>
