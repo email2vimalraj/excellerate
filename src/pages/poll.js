@@ -105,16 +105,16 @@ const Poll = () => {
     const ip = await publicIp.v4();
     const db = firebase.firestore();
 
-    // const qs = await db
-    //   .collection("poll-answers")
-    //   .where("pollid", "==", id)
-    //   .where("ip", "==", ip)
-    //   .get();
-    // if (qs.docs.length > 0) {
-    //   setAlreadySubmitted(true);
-    //   setLoading(false);
-    //   return;
-    // }
+    const qs = await db
+      .collection("poll-answers")
+      .where("pollid", "==", id)
+      .where("ip", "==", ip)
+      .get();
+    if (qs.docs.length > 0) {
+      setAlreadySubmitted(true);
+      setLoading(false);
+      return;
+    }
 
     await db.collection("poll-answers").add({
       pollid: id,
