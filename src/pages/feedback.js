@@ -269,7 +269,7 @@ const Feedback = () => {
           <Typography.Text type="secondary">
             All information provided will be kept confidential
           </Typography.Text>
-          <Form.Item required label="First Name" {...firstname}>
+          <Form.Item required label="First name" {...firstname}>
             <Input
               placeholder="Your answer"
               id="firstname"
@@ -277,7 +277,7 @@ const Feedback = () => {
             />
           </Form.Item>
 
-          <Form.Item required label="Last Name" {...lastname}>
+          <Form.Item required label="Last name" {...lastname}>
             <Input
               placeholder="Your answer"
               id="lastname"
@@ -285,7 +285,7 @@ const Feedback = () => {
             />
           </Form.Item>
 
-          <Form.Item required label="Job Title" {...jobtitle}>
+          <Form.Item required label="Job title" {...jobtitle}>
             <Input
               placeholder="Your answer"
               id="jobtitle"
@@ -350,7 +350,7 @@ const Feedback = () => {
 
           <Form.Item
             required
-            label="Have you implemented Internet breakouts at local branches to support direct access to cloud apps?"
+            label="Have you implemented internet breakouts at local branches to support direct access to cloud apps?"
           >
             <input
               type="radio"
@@ -512,7 +512,7 @@ const Feedback = () => {
           <Typography.Text type="secondary">
             All information provided will be kept confidential
           </Typography.Text>
-          <Form.Item required label="Current Project">
+          <Form.Item required label="Current project">
             <input
               type="radio"
               name="q7Radio"

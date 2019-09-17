@@ -13,7 +13,7 @@ export default () => (
     </Col>
     <Col lg={4} sm={2} md={6}>
       <Button size="large" className="button" href="/feedback">
-        Feedback Form
+        Let's Connect!
       </Button>
     </Col>
     <Col lg={4} sm={2} md={6}>
