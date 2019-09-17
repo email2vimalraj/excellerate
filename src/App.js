@@ -9,13 +9,9 @@ import Home from "./pages/home";
 import Question from "./pages/question";
 import Feedback from "./pages/feedback";
 import Admin from "./pages/admin";
-import AdminFeedback from "./pages/admin/feedback";
 
 import "./style.css";
 import Poll from "./pages/poll";
-import AddPoll from "./pages/admin/addpoll";
-import PollList from "./pages/admin/polllist";
-import PollResult from "./pages/admin/pollresult";
 
 function App() {
   return (
@@ -37,11 +33,7 @@ function App() {
         <Question path="question" />
         <Feedback path="feedback" />
         <Poll path="poll" />
-        <Admin path="Ecl1392019" />
-        <AdminFeedback path="/Ecl1392019/feedback" />
-        <AddPoll path="/Ecl1392019/addpoll" />
-        <PollList path="/Ecl1392019/polllist" />
-        <PollResult path="/Ecl1392019/pollresult/:pollid" />
+        <Admin path="Ecl1392019/*" />
       </Router>
 
       <Row>

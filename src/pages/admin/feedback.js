@@ -36,16 +36,24 @@ const AdminFeedback = () => {
     async function loadFeedbacks() {
       const db = firebase.firestore();
       const querySnapshot = await db.collection("feedbacks").get();
-      if (querySnapshot.docs.length === 0) {
-        setMessage("No feedbacks available!");
-      } else {
-        setDocs(querySnapshot.docs);
-      }
+      return querySnapshot.docs;
     }
 
+    let isSubscribed = true;
     if (firebase) {
-      loadFeedbacks();
+      loadFeedbacks().then(docs => {
+        if (isSubscribed) {
+          if (docs.length === 0) {
+            setMessage("No feedbacks available!");
+          } else {
+            setDocs(docs);
+          }
+        }
+      });
     }
+
+    // cleanup
+    return () => (isSubscribed = false);
   }, [firebase]);
 
   if (message) {
