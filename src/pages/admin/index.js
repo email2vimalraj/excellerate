@@ -1,13 +1,41 @@
 import React from "react";
-import { Row, Table, Col, Spin, Button, Breadcrumb } from "antd";
+import { Row, Table, Col, Spin, Button, Breadcrumb, Typography } from "antd";
 
 import "../../style.css";
 
 import FirebaseContext from "../../firebase";
 
+const ActionButtons = () => (
+  <>
+    <Row
+      type="flex"
+      justify="center"
+      style={{ marginTop: 30, marginBottom: 30 }}
+    >
+      <Breadcrumb>
+        <Breadcrumb.Item>Admin Home</Breadcrumb.Item>
+      </Breadcrumb>
+    </Row>
+    <Row type="flex" justify="end" style={{ marginTop: 30 }}>
+      <Col span={12}>
+        <Button size="large" className="button" href="/Ecl1392019/feedback">
+          Feedbacks
+        </Button>
+        <Button size="large" className="button" href="/Ecl1392019/addpoll">
+          Add Poll
+        </Button>
+        <Button size="large" className="button" href="/Ecl1392019/polllist">
+          Poll List
+        </Button>
+      </Col>
+    </Row>
+  </>
+);
+
 const Admin = () => {
   const { firebase } = React.useContext(FirebaseContext);
   const [questions, setQuestions] = React.useState([]);
+  const [message, setMessage] = React.useState(null);
 
   React.useEffect(() => {
     let unsubscribe = null;
@@ -18,7 +46,11 @@ const Admin = () => {
         .collection("questions")
         .orderBy("createdAt", "desc")
         .onSnapshot(function(snapshot) {
-          setQuestions(snapshot.docs);
+          if (snapshot.docs.length === 0) {
+            setMessage("No questions available!");
+          } else {
+            setQuestions(snapshot.docs);
+          }
         });
     }
 
@@ -29,15 +61,33 @@ const Admin = () => {
     };
   }, [firebase]);
 
+  if (message) {
+    return (
+      <>
+        <ActionButtons />
+        <Row
+          type="flex"
+          justify="center"
+          style={{ marginTop: 30, marginBottom: 30 }}
+        >
+          <Typography.Title level={2}>{message}</Typography.Title>
+        </Row>
+      </>
+    );
+  }
+
   if (questions.length === 0) {
     return (
-      <Row
-        type="flex"
-        justify="center"
-        style={{ marginTop: 30, marginBottom: 30 }}
-      >
-        <Spin size="large" />
-      </Row>
+      <>
+        <ActionButtons />
+        <Row
+          type="flex"
+          justify="center"
+          style={{ marginTop: 30, marginBottom: 30 }}
+        >
+          <Spin size="large" />
+        </Row>
+      </>
     );
   }
 
@@ -64,28 +114,7 @@ const Admin = () => {
 
   return (
     <>
-      <Row
-        type="flex"
-        justify="center"
-        style={{ marginTop: 30, marginBottom: 30 }}
-      >
-        <Breadcrumb>
-          <Breadcrumb.Item>Admin Home</Breadcrumb.Item>
-        </Breadcrumb>
-      </Row>
-      <Row type="flex" justify="end" style={{ marginTop: 30 }}>
-        <Col span={12}>
-          <Button size="large" className="button" href="/Ecl1392019/feedback">
-            Feedbacks
-          </Button>
-          <Button size="large" className="button" href="/Ecl1392019/addpoll">
-            Add Poll
-          </Button>
-          <Button size="large" className="button" href="/Ecl1392019/polllist">
-            Poll List
-          </Button>
-        </Col>
-      </Row>
+      <ActionButtons />
       <Row
         type="flex"
         justify="center"

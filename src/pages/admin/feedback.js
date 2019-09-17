@@ -1,21 +1,46 @@
 import React from "react";
 import { Link } from "@reach/router";
-import { Row, Col, Table, Spin, Button, Breadcrumb, Icon } from "antd";
+import {
+  Row,
+  Col,
+  Table,
+  Spin,
+  Button,
+  Breadcrumb,
+  Icon,
+  Typography
+} from "antd";
 import { CSVLink } from "react-csv";
 
 import "../../style.css";
 
 import FirebaseContext from "../../firebase";
 
+const ActionButtons = () => (
+  <Row type="flex" justify="center" style={{ marginTop: 30, marginBottom: 30 }}>
+    <Breadcrumb>
+      <Breadcrumb.Item>
+        <Link to="/Ecl1392019">Admin Home</Link>
+      </Breadcrumb.Item>
+      <Breadcrumb.Item>Feedbacks</Breadcrumb.Item>
+    </Breadcrumb>
+  </Row>
+);
+
 const AdminFeedback = () => {
   const { firebase } = React.useContext(FirebaseContext);
   const [docs, setDocs] = React.useState([]);
+  const [message, setMessage] = React.useState(null);
 
   React.useEffect(() => {
     async function loadFeedbacks() {
       const db = firebase.firestore();
       const querySnapshot = await db.collection("feedbacks").get();
-      setDocs(querySnapshot.docs);
+      if (querySnapshot.docs.length === 0) {
+        setMessage("No feedbacks available!");
+      } else {
+        setDocs(querySnapshot.docs);
+      }
     }
 
     if (firebase) {
@@ -23,15 +48,33 @@ const AdminFeedback = () => {
     }
   }, [firebase]);
 
+  if (message) {
+    return (
+      <>
+        <ActionButtons />
+        <Row
+          type="flex"
+          justify="center"
+          style={{ marginTop: 30, marginBottom: 30 }}
+        >
+          <Typography.Title level={2}>{message}</Typography.Title>
+        </Row>
+      </>
+    );
+  }
+
   if (docs.length === 0) {
     return (
-      <Row
-        type="flex"
-        justify="center"
-        style={{ marginTop: 30, marginBottom: 30 }}
-      >
-        <Spin size="large" />
-      </Row>
+      <>
+        <ActionButtons />
+        <Row
+          type="flex"
+          justify="center"
+          style={{ marginTop: 30, marginBottom: 30 }}
+        >
+          <Spin size="large" />
+        </Row>
+      </>
     );
   }
 
@@ -195,18 +238,7 @@ const AdminFeedback = () => {
 
   return (
     <>
-      <Row
-        type="flex"
-        justify="center"
-        style={{ marginTop: 30, marginBottom: 30 }}
-      >
-        <Breadcrumb>
-          <Breadcrumb.Item>
-            <Link to="/Ecl1392019">Admin Home</Link>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>Feedbacks</Breadcrumb.Item>
-        </Breadcrumb>
-      </Row>
+      <ActionButtons />
       <Row
         type="flex"
         justify="center"
