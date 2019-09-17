@@ -12,6 +12,8 @@ const AddPoll = () => {
   const [question, setQuestion] = React.useState("");
   const [option1, setOption1] = React.useState("");
   const [option2, setOption2] = React.useState("");
+  const [option3, setOption3] = React.useState("");
+  const [option4, setOption4] = React.useState("");
 
   const { firebase } = React.useContext(FirebaseContext);
 
@@ -26,13 +28,19 @@ const AddPoll = () => {
     if (e.target.id === "option2") {
       setOption2(e.target.value);
     }
+    if (e.target.id === "option3") {
+      setOption3(e.target.value);
+    }
+    if (e.target.id === "option4") {
+      setOption4(e.target.value);
+    }
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
 
-    const options = [option1, option2];
+    const options = [option1, option2, option3, option4];
     const db = firebase.firestore();
     await db.collection("polls").add({
       question,
@@ -96,6 +104,24 @@ const AddPoll = () => {
                 id="option2"
                 onChange={onTextChange}
                 value={option2}
+              />
+            </Form.Item>
+
+            <Form.Item label="Option 3">
+              <Input
+                placeholder="option 3"
+                id="option3"
+                onChange={onTextChange}
+                value={option3}
+              />
+            </Form.Item>
+
+            <Form.Item label="Option 4">
+              <Input
+                placeholder="option 4"
+                id="option4"
+                onChange={onTextChange}
+                value={option4}
               />
             </Form.Item>
 
