@@ -125,50 +125,58 @@ const AdminFeedback = () => {
       dataIndex: "companyemail"
     },
     {
-      title:
-        "Have you migrated your applications and workloads to cloud-based services?",
-      label:
-        "Have you migrated your applications and workloads to cloud-based services?",
-      key: "q1Radio",
-      dataIndex: "q1Radio"
+      title: "Keynote Session Content",
+      label: "Keynote Session Content",
+      key: "q1aRadio",
+      dataIndex: "q1aRadio"
     },
     {
-      title:
-        "Have you implemented Internet breakouts at local branches to support direct access to cloud apps?",
-      label:
-        "Have you implemented Internet breakouts at local branches to support direct access to cloud apps?",
-      key: "q2Radio",
-      dataIndex: "q2Radio"
+      title: "Panel discussion",
+      label: "Panel discussion",
+      key: "q1bRadio",
+      dataIndex: "q1bRadio"
     },
     {
-      title:
-        "Does your current WAN solution support your digital transformation objectives?",
-      label:
-        "Does your current WAN solution support your digital transformation objectives?",
-      key: "q3Radio",
-      dataIndex: "q3Radio"
+      title: "Event length",
+      label: "Event length",
+      key: "q1cRadio",
+      dataIndex: "q1cRadio"
     },
     {
-      title: "Do you have a cyber security strategy in place?",
-      label: "Do you have a cyber security strategy in place?",
-      key: "q4Radio",
-      dataIndex: "q4Radio"
+      title: "Overall evaluation of the summit",
+      label: "Overall evaluation of the summit",
+      key: "q1dRadio",
+      dataIndex: "q1dRadio"
     },
     {
-      title:
-        "Are roles and responsibilities for cyber security well defined across your organisation?",
-      label:
-        "Are roles and responsibilities for cyber security well defined across your organisation?",
-      key: "q5Radio",
-      dataIndex: "q5Radio"
+      title: "What did you like most about the Summit?",
+      label: "What did you like most about the Summit?",
+      key: "q1Input1",
+      dataIndex: "q1Input1"
     },
     {
-      title:
-        "Do you have the right tools in place to mitigate cyber security incidents?",
-      label:
-        "Do you have the right tools in place to mitigate cyber security incidents?",
-      key: "q6Radio",
-      dataIndex: "q6Radio"
+      title: "What topics would you like to see covered at future engagements?",
+      label: "What topics would you like to see covered at future engagements?",
+      key: "q1Input2",
+      dataIndex: "q1Input2"
+    },
+    {
+      title: "Digital Transformation enabler",
+      label: "Digital Transformation enabler",
+      key: "q2aRadio",
+      dataIndex: "q2aRadio"
+    },
+    {
+      title: "Provider of IT solutions",
+      label: "Provider of IT solutions",
+      key: "q2bRadio",
+      dataIndex: "q2bRadio"
+    },
+    {
+      title: "Managed Service provider for Unified Communications",
+      label: "Managed Service provider for Unified Communications",
+      key: "q2cRadio",
+      dataIndex: "q2cRadio"
     },
     {
       title: "Current Project",
@@ -210,12 +218,15 @@ const AdminFeedback = () => {
       contactnumber,
       companyemail,
       comment,
-      q1Radio,
-      q2Radio,
-      q3Radio,
-      q4Radio,
-      q5Radio,
-      q6Radio,
+      q1aRadio,
+      q1bRadio,
+      q1cRadio,
+      q1dRadio,
+      q1Input1,
+      q1Input2,
+      q2aRadio,
+      q2bRadio,
+      q2cRadio,
       q7Radio,
       q8Radio,
       q9Radio,
@@ -230,12 +241,15 @@ const AdminFeedback = () => {
       company,
       contactnumber,
       companyemail,
-      q1Radio,
-      q2Radio,
-      q3Radio,
-      q4Radio,
-      q5Radio,
-      q6Radio,
+      q1aRadio,
+      q1bRadio,
+      q1cRadio,
+      q1dRadio,
+      q1Input1,
+      q1Input2,
+      q2aRadio,
+      q2bRadio,
+      q2cRadio,
       q7Radio,
       q8Radio,
       q9Radio,
