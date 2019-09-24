@@ -1,6 +1,15 @@
 import React from "react";
 import { Link } from "@reach/router";
-import { Row, Col, Button, Form, Input, Radio, Typography } from "antd";
+import {
+  Row,
+  Col,
+  Button,
+  Form,
+  Input,
+  Radio,
+  Typography,
+  Checkbox
+} from "antd";
 
 import FirebaseContext from "../firebase";
 
@@ -135,7 +144,7 @@ const Feedback = () => {
   };
 
   const handleQ7RadioChange = e => {
-    setQ7Radio(e.target.value);
+    setQ7Radio(e);
   };
 
   const handleQ8RadioChange = e => {
@@ -203,6 +212,7 @@ const Feedback = () => {
     } else {
       setQ1Input2({ ...q1Input2, validateStatus: null });
     }
+    console.log(q7Radio);
     if (
       !q1aRadio ||
       !q1bRadio ||
@@ -665,56 +675,39 @@ const Feedback = () => {
               All information provided will be kept confidential
             </Typography.Text>
             <Form.Item required label="Current project">
-              <input
-                type="radio"
-                name="q7Radio"
-                onChange={handleQ7RadioChange}
-                value="IoT with Mobile Network Connectivity"
-              />
-              &nbsp;IoT with Mobile Network Connectivity
-              <br />
-              <input
-                type="radio"
-                name="q7Radio"
-                onChange={handleQ7RadioChange}
-                value="Managed Hosting Services (Private Cloud, Managed Colocation, etc.)"
-              />
-              &nbsp;Managed Hosting Services (Private Cloud, Managed Colocation,
-              etc.)
-              <br />
-              <input
-                type="radio"
-                name="q7Radio"
-                onChange={handleQ7RadioChange}
-                value="Managed Security Services (SOC/SIEM, DDoS, VAPT, etc.)"
-              />
-              &nbsp;Managed Security Services (SOC/SIEM, DDoS, VAPT, etc.)
-              <br />
-              <input
-                type="radio"
-                name="q7Radio"
-                onChange={handleQ7RadioChange}
-                value="Network Connectivity (MPLS, SLA over Internet, SD-WAN, etc.)"
-              />
-              &nbsp;Network Connectivity (MPLS, SLA over Internet, SD-WAN, etc.)
-              <br />
-              <input
-                type="radio"
-                name="q7Radio"
-                onChange={handleQ7RadioChange}
-                value="Unified Communications as a Service (GSIP, Microsoft/Cisco, Microsoft TEAMS Direct Routing, etc.)"
-              />
-              &nbsp;Unified Communications as a Service (GSIP, Microsoft/Cisco,
-              Microsoft TEAMS Direct Routing, etc.)
-              <br />
-              <input
-                type="radio"
-                name="q7Radio"
-                onChange={handleQ7RadioChange}
-                value="Voice"
-              />
-              &nbsp;Voice
-              <br />
+              <Checkbox.Group name="q7Radio" onChange={handleQ7RadioChange}>
+                <Row>
+                  <Checkbox value="IoT with Mobile Network Connectivity">
+                    IoT with Mobile Network Connectivity
+                  </Checkbox>
+                </Row>
+                <Row>
+                  <Checkbox value="Managed Hosting Services (Private Cloud, Managed Colocation, etc.)">
+                    Managed Hosting Services (Private Cloud, Managed Colocation,
+                    etc.)
+                  </Checkbox>
+                </Row>
+                <Row>
+                  <Checkbox value="Managed Security Services (SOC/SIEM, DDoS, VAPT, etc.)">
+                    Managed Security Services (SOC/SIEM, DDoS, VAPT, etc.)
+                  </Checkbox>
+                </Row>
+                <Row>
+                  <Checkbox value="Network Connectivity (MPLS, SLA over Internet, SD-WAN, etc.)">
+                    Network Connectivity (MPLS, SLA over Internet, SD-WAN, etc.)
+                  </Checkbox>
+                </Row>
+                <Row>
+                  <Checkbox value="Unified Communications as a Service (GSIP, Microsoft/Cisco, Microsoft TEAMS Direct Routing, etc.)">
+                    Unified Communications as a Service (GSIP, Microsoft/Cisco,
+                    Microsoft TEAMS Direct Routing, etc.)
+                  </Checkbox>
+                </Row>
+
+                <Row>
+                  <Checkbox value="Voice">Voice</Checkbox>
+                </Row>
+              </Checkbox.Group>
             </Form.Item>
 
             <Form.Item required label="What is your selected project timeline?">

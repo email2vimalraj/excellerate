@@ -250,7 +250,7 @@ const AdminFeedback = () => {
       q2aRadio,
       q2bRadio,
       q2cRadio,
-      q7Radio,
+      q7Radio: Array.isArray(q7Radio) ? q7Radio.join(", ") : q7Radio,
       q8Radio,
       q9Radio,
       q10Radio,
